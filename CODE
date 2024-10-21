@@ -1,0 +1,416 @@
+                                                                                                  DELETELINEARQUEUE
+#include <stdio.h>
+#define SIZE 5 // Define the maximum size of the queue
+
+int queue[SIZE];
+int front = -1, rear = -1;
+
+void enqueue(int value) {
+    // Check if the queue is full
+    if (rear == SIZE - 1) {
+        printf("Queue is full! Cannot insert %d.\n", value);
+    } else {
+        if (front == -1) {
+            front = 0; // Set front to 0 when inserting the first element
+        }
+        rear++;
+        queue[rear] = value;
+        printf("Inserted %d into the queue.\n", value);
+    }
+}
+
+void dequeue() {
+    // Check if the queue is empty
+    if (front == -1 || front > rear) {
+        printf("Queue is empty! Cannot dequeue.\n");
+    } else {
+        printf("Deleted %d from the queue.\n", queue[front]);
+        front++; // Increment front to remove the element
+    }
+}
+
+void display() {
+    // Check if the queue is empty
+    if (front == -1 || front > rear) {
+        printf("Queue is empty!\n");
+    } else {
+        printf("Queue elements are: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\nQueue Operations: \n");
+        printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+                                                                                               INSERTLINEARQUEUE
+#include <stdio.h>
+#define MAX 5 // Maximum size of the queue
+
+int queue[MAX]; // Array to implement the queue
+int front = -1, rear = -1; // Variables to track front and rear of the queue
+
+// Function to insert (enqueue) an element into the queue
+void insert(int value) {
+    if (rear == MAX - 1) {
+        printf("Queue Overflow! Cannot insert %d\n", value);
+    } else {
+        if (front == -1) front = 0; // Set front to 0 if it's the first element
+        rear++;
+        queue[rear] = value;
+        printf("%d inserted into queue.\n", value);
+    }
+}
+
+// Function to display the elements of the queue
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty!\n");
+    } else {
+        printf("Queue elements are: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, value;
+
+    while (1) {
+        printf("\n1. Insert\n2. Display\n3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to insert: ");
+                scanf("%d", &value);
+                insert(value);
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                return 0;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+    return 0;
+}
+                                                                                                 POPSTACK
+#include <stdio.h>
+#define MAX 5 // Maximum size of the stack
+
+int stack[MAX]; // Array to implement the stack
+int top = -1;   // Variable to track the top element of the stack
+
+// Function to push an element onto the stack
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot push %d\n", value);
+    } 
+    else 
+    {
+        top++;
+        stack[top] = value;
+        printf("%d pushed to stack.\n", value);
+    }
+}
+
+// Function to pop an element from the stack
+void pop() {
+    if (top == -1) 
+    {
+        printf("Stack Underflow! No elements to pop.\n");
+    } else
+    {
+        printf("%d popped from stack.\n", stack[top]);
+        top--; // Decrement top to remove the top element
+    }
+}
+
+// Function to display the elements of the stack
+void display() {
+    if (top == -1) {
+        printf("Stack is empty!\n");
+    }
+     else 
+     {
+        printf("Stack elements are: ");
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, value;
+
+    while (1) {
+        printf("\n1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to push: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+    return 0;
+}
+                                                                                                PUSHSTACK
+#include <stdio.h>
+#define MAX 5 // Maximum size of the stack
+
+int stack[MAX]; // Array to implement stack
+int top = -1;   // Variable to track the top element of the stack
+
+// Function to push an element onto the stack
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot push %d\n", value);
+    } 
+    else
+     {
+        top++;
+        stack[top] = value;
+        printf("%d pushed to stack.\n", value);
+    }
+}
+
+// Function to display the elements of the stack
+void display() {
+    if (top == -1) 
+    {
+        printf("Stack is empty!\n");
+    } 
+    else 
+    {
+        printf("Stack elements are: ");
+        for (int i = top; i >= 0; i--) 
+        {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, value;
+
+    while (1) 
+    {
+        printf("\n1. Push\n2. Display\n3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to push: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                return 0;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+    return 0;
+}
+                                                                                             INSERTBEGINLINKEDLIST
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;  // Pointer to the next node
+};
+
+// Function to create a new node
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a new node at the beginning of the linked list
+void insertAtBeginning(struct Node** head_ref, int new_data) {
+    struct Node* newNode = createNode(new_data);  // Create a new node
+    newNode->next = *head_ref;  // Point the new node to the old head
+    *head_ref = newNode;  // Update the head to the new node
+}
+
+// Function to display the linked list
+void displayList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");  // Indicate the end of the list
+}
+
+int main() {
+    struct Node* head = NULL;  // Initialize the head of the list
+    int choice, value;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Insert element at beginning\n");
+        printf("2. Display linked list\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert at beginning: ");
+                scanf("%d", &value);
+                insertAtBeginning(&head, value);
+                break;
+            case 2:
+                displayList(head);
+                break;
+            case 3:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}
+                                                                                                INSERTENDLINKEDLIST
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a new node at the end of the list
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    
+    // If the list is empty, make the new node the head
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    // Traverse to the last node
+    struct Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    // Link the new node at the end
+    temp->next = newNode;
+}
+
+// Function to print the linked list
+void printList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
+}
+
+// Main function to demonstrate insertion
+int main() {
+    struct Node* head = NULL;
+    int data;
+    int choice;
+
+    while (1) { 
+        printf("Menu:\n");
+        printf("1. Insert at end\n");
+        printf("2. Print list\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter a number to insert at the end of the list: ");
+                scanf("%d", &data);
+                insertAtEnd(&head, data);
+                break;
+
+            case 2:
+                printf("The linked list is: ");
+                printList(head);
+                break;
+
+            case 3:
+                printf("Exiting...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    } 
+
+    // Free the allocated memory (not shown here for brevity)
+    
+    return 0;
+}
